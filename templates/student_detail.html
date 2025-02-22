@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <!-- Google Fonts for Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #121212, #1e1e1e); /* Same gradient as the previous pages */
+            color: #ffffff; /* White text */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Neumorphic shadow */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4A6CF7; /* Blue color for consistency */
+            margin-bottom: 20px;
+        }
+
+        .student-details {
+            border-top: 1px solid rgba(255, 255, 255, 0.1); /* Light border */
+            padding-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .detail {
+            margin-bottom: 10px;
+            color: #e0e0e0; /* Light gray text */
+        }
+
+        .detail strong {
+            color: #4A6CF7; /* Blue color for consistency */
+        }
+
+        .actions {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .actions a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 12px 24px;
+            background-color: #4A6CF7; /* Blue color for consistency */
+            color: #ffffff; /* White text */
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .actions a:hover {
+            background-color: #3b5bdb; /* Darker blue on hover */
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Details</h1>
+        <div class="student-details">
+            <div class="detail"><strong>Name:</strong> {{ student.name }}</div>
+            <div class="detail"><strong>Email:</strong> {{ student.email }}</div>
+            <div class="detail"><strong>Phone Number:</strong> {{ student.phone_number }}</div>
+            <div class="detail"><strong>Class:</strong> {{ student.student_class }}</div>
+            <div class="detail"><strong>Authorized:</strong> {% if student.authorized %} Yes {% else %} No {% endif %}</div>
+        </div>
+        <div class="actions">
+            <a href="{% url 'student-list' %}">Back to List</a>
+            <a href="{% url 'student-authorize' pk=student.pk %}">Authorize</a>
+            <a href="{% url 'student-delete' pk=student.pk %}">Delete</a>
+        </div>
+    </div>
+</body>
+</html>

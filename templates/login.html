@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Include Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Include Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #121212, #1e1e1e); /* Same gradient as the previous page */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* Login Container Styles */
+        .login-container {
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Neumorphic shadow */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            width: 350px;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .login-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            text-align: center;
+            color: #4A6CF7; /* Blue color for consistency */
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 2em;
+        }
+        p {
+            text-align: center;
+            color: #e0e0e0; /* Light gray text */
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 8px;
+            color: #e0e0e0; /* Light gray text */
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="password"] {
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            color: #ffffff; /* White text */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input:focus {
+            border-color: #4A6CF7; /* Blue color on focus */
+            box-shadow: 0 0 8px rgba(74, 108, 247, 0.5); /* Glow effect */
+            outline: none;
+        }
+        button {
+            background-color: #4A6CF7; /* Blue color for consistency */
+            color: #ffffff; /* White text */
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #3b5bdb; /* Darker blue on hover */
+            transform: translateY(-2px);
+        }
+        .message {
+            background-color: rgba(242, 222, 222, 0.2); /* Semi-transparent background */
+            color: #ff6b6b; /* Red text for error messages */
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(235, 204, 209, 0.2); /* Light border */
+            text-align: center;
+        }
+        .back-icon {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 20px;
+            color: #4A6CF7; /* Blue color for consistency */
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .back-icon:hover {
+            color: #3b5bdb; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <i class="fas fa-arrow-left back-icon" onclick="window.history.back();" aria-hidden="true"></i> <!-- Back icon -->
+        <h2>Admin Login</h2>
+        <p>Please enter your admin username and password.</p> <!-- Instruction message -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter admin username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter admin password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>

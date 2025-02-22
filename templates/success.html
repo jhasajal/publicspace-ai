@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <!-- Google Fonts for Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #121212, #1e1e1e); /* Same gradient as the previous pages */
+            color: #ffffff; /* White text */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4A6CF7; /* Blue color for consistency */
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 24px;
+            background-color: #4A6CF7; /* Blue color for consistency */
+            color: #ffffff; /* White text */
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        a:hover {
+            background-color: #3b5bdb; /* Darker blue on hover */
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Camera Configuration Saved Successfully!</h1>
+        <a href="{% url 'camera_config_create' %}">Create another</a>
+        <a href="{% url 'camera_config_list' %}">View saved configurations</a>
+    </div>
+</body>
+</html>

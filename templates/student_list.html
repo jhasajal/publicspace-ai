@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts for Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #121212, #1e1e1e); /* Same gradient as the previous pages */
+            color: #ffffff; /* White text */
+            margin: 0;
+            padding: 0;
+            position: relative;
+            min-height: 100vh; /* Ensure full viewport height */
+        }
+
+        .container {
+            width: 100%;
+            max-width: auto;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Neumorphic shadow */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-sizing: border-box;
+            position: relative; /* Ensure z-index works */
+            z-index: 1; /* Ensure content is above footer */
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4A6CF7; /* Blue color for consistency */
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Light border */
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4A6CF7; /* Blue color for consistency */
+            color: #ffffff; /* White text */
+        }
+
+        tr {
+            background-color: rgba(255, 255, 255, 0.05); /* Semi-transparent background */
+            color: #e0e0e0; /* Light gray text */
+            transition: background-color 0.3s;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1); /* Slightly lighter for even rows */
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on hover */
+        }
+
+        .actions a {
+            display: inline-block;
+            margin-right: 5px;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #4A6CF7; /* Blue color for consistency */
+            border: 1px solid #4A6CF7; /* Blue border */
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .actions a:hover {
+            background-color: #4A6CF7; /* Blue background on hover */
+            color: #ffffff; /* White text on hover */
+        }
+
+        /* Footer styles */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #4A6CF7; /* Blue color for consistency */
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .footer i {
+            margin-right: 10px;
+        }
+
+        .footer:hover {
+            color: #3b5bdb; /* Darker blue on hover */
+        }
+
+        /* Responsive Styles */
+        @media only screen and (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 10px;
+            }
+            .actions a {
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Class</th>
+                    <th>Authorized</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.phone_number }}</td>
+                    <td>{{ student.student_class }}</td>
+                    <td>{% if student.authorized %} Yes {% else %} No {% endif %}</td>
+                    <td class="actions">
+                        <a href="{% url 'student-authorize' pk=student.pk %}">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Back to home icon -->
+    <div class="footer" onclick="location.href='{% url 'home' %}'">
+        <i class="fas fa-home"></i> Back to Home
+    </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Student Confirmation</title>
+    <!-- Google Fonts for Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #121212, #1e1e1e); /* Same gradient as the previous pages */
+            color: #ffffff; /* White text */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Neumorphic shadow */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff6b6b; /* Red color for danger */
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            color: #e0e0e0; /* Light gray text */
+            margin-bottom: 20px;
+        }
+
+        .actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .actions a, .actions button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 8px;
+            color: #ffffff; /* White text */
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .actions a {
+            background-color: #4A6CF7; /* Blue color for consistency */
+        }
+
+        .actions button {
+            background-color: #ff6b6b; /* Red color for danger */
+        }
+
+        .actions a:hover, .actions button:hover {
+            background-color: #3b5bdb; /* Darker blue on hover */
+            transform: translateY(-2px);
+        }
+
+        .actions button:hover {
+            background-color: #ff4757; /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Student</h1>
+        <p>Are you sure you want to delete {{ student.name }}?</p>
+        <div class="actions">
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+                <a href="{% url 'student-detail' student.pk %}">Cancel</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

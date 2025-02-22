@@ -1,0 +1,68 @@
+<!-- templates/mood_detection.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 10px;
+            color: #4CAF50; /* Mood detection theme */
+        }
+        h2 {
+            font-size: 18px;
+            color: #FFD700; /* Gold color for emphasis */
+        }
+        .video-container {
+            position: relative;
+            width: 80%;
+            max-width: 920px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+            background-color: #222;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .video-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <h1>😊 Real-Time Mood Detection 😊</h1>
+    <h2>Analyzing Facial Expressions to Detect Mood</h2>
+
+    <div class="video-container">
+        <h2>Live Camera Feed</h2>
+        <!-- Live video feed from the Django view -->
+        <img src="{% url 'mood_detection' %}" alt="Mood Detection Feed">
+    </div>
+
+    <p class="footer">Understand emotions in real-time using AI-powered mood detection.</p>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Configurations List</title>
+    <!-- Google Fonts for Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- CSS for styling the table and layout -->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #121212, #1e1e1e); /* Same gradient as the previous pages */
+            color: #ffffff; /* White text */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items to the top */
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Neumorphic shadow */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #4A6CF7; /* Blue color for consistency */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #4A6CF7; /* Blue header */
+            color: #ffffff; /* White text */
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: left;
+        }
+
+        th {
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        td {
+            font-weight: 400;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Light border */
+            color: #e0e0e0; /* Light gray text */
+        }
+
+        .create-new-btn, .back-home-btn {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 12px 20px;
+            background-color: #4A6CF7; /* Blue button */
+            color: #ffffff; /* White text */
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .create-new-btn:hover, .back-home-btn:hover {
+            background-color: #3b5bdb; /* Darker blue on hover */
+            transform: translateY(-2px);
+        }
+
+        a {
+            color: #4A6CF7; /* Blue color for links */
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #3b5bdb; /* Darker blue on hover */
+            text-decoration: underline;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Saved Camera Configurations</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Camera Source</th>
+                    <th>Threshold</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for config in configs %}
+                <tr>
+                    <td>{{ config.name }}</td>
+                    <td>{{ config.camera_source }}</td>
+                    <td>{{ config.threshold }}</td>
+                    <td>
+                        <a href="{% url 'camera_config_update' config.id %}">Edit</a> |
+                        <a href="{% url 'camera_config_delete' config.id %}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{% url 'camera_config_create' %}" class="create-new-btn">Create New Configuration</a>
+        <a href="{% url 'home' %}" class="back-home-btn">Back to Home</a>
+    </div>
+</body>
+</html>

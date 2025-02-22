@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Occurred</title>
+    <!-- Google Fonts for Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #121212, #1e1e1e); /* Same gradient as the previous pages */
+            color: #ffffff; /* White text */
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ff6b6b; /* Red color for error heading */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #e0e0e0; /* Light gray text */
+        }
+
+        a {
+            color: #ffffff; /* White text */
+            text-decoration: none;
+            background-color: #4A6CF7; /* Blue color for consistency */
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        a:hover {
+            background-color: #3b5bdb; /* Darker blue on hover */
+            transform: translateY(-2px);
+        }
+
+        .suggestion {
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Neumorphic shadow */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            margin-top: 20px;
+            width: 80%;
+            max-width: 500px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .suggestion:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .suggestion h2 {
+            color: #ff6b6b; /* Red color for error heading */
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 1.1em;
+            margin: 10px 0;
+            text-align: left;
+            color: #e0e0e0; /* Light gray text */
+        }
+
+        ul li::before {
+            content: "•";
+            color: #4A6CF7; /* Blue color for bullet points */
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>An Error Occurred</h1>
+    <p>{{ error_message }}</p>
+    <p><a href="{% url 'home' %}">Return to Home</a></p>
+    <div class="suggestion">
+        <h2>Suggested Fixes:</h2>
+        <p>It seems there is an issue with the camera configuration.</p>
+        <ul>
+            <li>Ensure that the camera is connected properly.</li>
+            <li>Check the IP address and port settings in the camera configuration.</li>
+            <li>Make sure the camera is powered on and accessible from your network.</li>
+            <li>Verify that the required permissions are granted to access the camera.</li>
+            <li>Consult the camera's manual for troubleshooting steps.</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!-- templates/fire_detection.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 10px;
+            color: #FF5733; /* Fire-themed color */
+        }
+        h2 {
+            font-size: 18px;
+            color: #FFD700; /* Gold color for emphasis */
+        }
+        .video-container {
+            position: relative;
+            width: 80%;
+            max-width: 920px; /* Match the frame size in the view */
+            border: 2px solid #FF5733;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 87, 51, 0.5);
+            background-color: #222;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .video-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔥 Real-Time Fire Detection 🔥</h1>
+    <h2>Monitoring Live Video Feed for Fire Hazards</h2>
+
+    <div class="video-container">
+        <h2>Live Camera Feed</h2>
+        <!-- Live video feed from the Django view -->
+        <img src="{% url 'fire_detection' %}" alt="Fire Detection Feed">
+    </div>
+
+    <p class="footer">Stay alert! This system helps in early fire detection to ensure safety.</p>
+</body>
+</html>

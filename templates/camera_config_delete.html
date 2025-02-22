@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Camera Configuration</title>
+    <!-- Google Fonts for Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- CSS Styling -->
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #121212, #1e1e1e); /* Same gradient as the previous pages */
+            color: #ffffff; /* White text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* Neumorphic shadow */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #4A6CF7; /* Blue color for consistency */
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 30px;
+            color: #e0e0e0; /* Light gray text */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        button, a {
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s;
+        }
+
+        button {
+            background-color: #dc3545; /* Red color for delete button */
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #c82333; /* Darker red on hover */
+            transform: translateY(-2px);
+        }
+
+        a {
+            background-color: #6c757d; /* Gray color for cancel button */
+            color: #fff;
+            display: inline-block;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #5a6268; /* Darker gray on hover */
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            button, a {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Camera Configuration</h1>
+        <p>Are you sure you want to delete "<strong>{{ config.name }}</strong>"?</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="button-container">
+                <button type="submit">Yes, Delete</button>
+                <a href="{% url 'camera_config_list' %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
