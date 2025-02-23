@@ -1,5 +1,9 @@
 # Public Space Intelligence System
 
+## 🎥 Demo
+Check out the live demo of the system in action:
+[![Watch the Demo](https://img.youtube.com/vi/YOUR_VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=RopaSDdqSJ4)
+
 ## 🚀 Hackathon Showcase
 
 ### Overview
@@ -89,5 +93,5 @@ This project is licensed under the MIT License.
 
 🎉 **Presented at [FOSS HUB] - [2025]!** 🎉
 
-**Maintained by:** Team CGL - Coder's Got Latent
+**Maintained by:** Coder's Got Latent - Team CGL
 
