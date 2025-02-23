@@ -13,7 +13,11 @@ class AttendanceAdmin(admin.ModelAdmin):
     list_filter = ['date']
     search_fields = ['student__name']
 
-   
+    def get_readonly_fields(self, request, obj=None):
+        if obj:  # Editing an existing object
+            return ['student', 'date', 'check_in_time', 'check_out_time']
+        else:  # Adding a new object
+            return ['date', 'check_in_time', 'check_out_time']
 
     def save_model(self, request, obj, form, change):
         if change:  # Editing an existing object
