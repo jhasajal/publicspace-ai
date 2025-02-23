@@ -91,7 +91,7 @@ This project is licensed under the MIT License.
 
 ---
 
-🎉 **Presented at [FOSS HUB] - [2025]!** 🎉
+🎉 **Presented at [FOSS HACK] - [2025]!** 🎉
 
 **Maintained by:** Coder's Got Latent - Team CGL
 
