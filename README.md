@@ -1,4 +1,4 @@
-# Public Space Intelligence System
+# Public Space Intelligence System 🧠
 
 ## 🎥 Demo
 Check out the live demo of the system in action:
