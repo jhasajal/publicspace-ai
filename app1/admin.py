@@ -20,8 +20,8 @@ class AttendanceAdmin(admin.ModelAdmin):
             return ['date', 'check_in_time', 'check_out_time']
 
     def save_model(self, request, obj, form, change):
-        if change:  # Editing an existing object
-            # Ensure check-in and check-out times cannot be modified via admin
+        if change:  
+
             obj.check_in_time = Attendance.objects.get(id=obj.id).check_in_time
             obj.check_out_time = Attendance.objects.get(id=obj.id).check_out_time
         super().save_model(request, obj, form, change)
