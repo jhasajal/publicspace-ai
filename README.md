@@ -87,7 +87,7 @@ This project is licensed under the MIT License.
 
 ---
 
-🎉 **Presented at [Hackathon Name] - [Year]!** 🎉
+🎉 **Presented at [FOSS HUB] - [2025]!** 🎉
 
-**Maintained by:** Your Name / Your Organization
+**Maintained by:** Team CGL - Coder's Got Latent
 
